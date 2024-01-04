@@ -4,7 +4,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "start": "npx playwright install msedge && npx playwright test index"
+        "start": "npx playwright test index"
     },
     "keywords": [],
     "author": "",
@@ -14,8 +14,6 @@
         "@types/node": "^20.10.6"
     },
     "dependencies": {
-        "playwright": "^1.40.1",
-        "playwright-extra": "^4.3.6",
-        "puppeteer-extra-plugin-stealth": "^2.11.2"
+        "playwright": "^1.40.1"
     }
 }
