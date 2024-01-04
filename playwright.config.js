@@ -34,14 +34,14 @@ module.exports = defineConfig({
 
     /* Configure projects for major browsers */
     projects: [
-        // {
-        //     name: 'chromium',
-        //     use: {
-        //         ...devices['Desktop Chrome'],
-        //         // browserName: 'chromium',
-        //         // headless: false
-        //     },
-        // },
+        {
+            name: 'chromium',
+            use: {
+                ...devices['Desktop Chrome'],
+                // browserName: 'chromium',
+                // headless: false
+            },
+        },
 
         // {
         //     name: 'firefox',
@@ -65,10 +65,10 @@ module.exports = defineConfig({
         // },
 
         /* Test against branded browsers. */
-        {
-          name: 'Microsoft Edge',
-          use: { ...devices['Desktop Edge'], channel: 'msedge', headless:  true},
-        },
+        // {
+        //   name: 'Microsoft Edge',
+        //   use: { ...devices['Desktop Edge'], channel: 'msedge', headless:  true},
+        // },
         // {
         //   name: 'Google Chrome',
         //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
