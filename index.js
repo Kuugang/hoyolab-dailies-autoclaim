@@ -13,19 +13,6 @@ let loggedIn = false
 let USERNAME = "gideon.yople@gmail.com"
 let PASSWORD = "detectiveconan27"
 
-exec(`npx playwright install`, (error, stdout, stderr) => {
-    if (error) {
-        console.error(`Error: ${error.message}`);
-        return;
-    }
-    if (stderr) {
-        console.error(`stderr: ${stderr}`);
-        return;
-    }
-    console.log(`Package '${packageName}' successfully installed.`);
-});
-execSync(`npx playwright install`, { stdio: 'inherit' });
-
 app.get("/", (req, res) => {
     res.send("<a href = 'https://act.hoyolab.com/ys/event/signin-sea-v3/index.html?act_id=e202102251931481'>Here</a>")
 });
@@ -70,7 +57,6 @@ app.get("/claim", async (req, res) => {
 });
 
 const server = app.listen(port, () => {
-    install()
     console.log(`Server listening on port ${port}`);
 });
 
