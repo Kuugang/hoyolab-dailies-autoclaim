@@ -11,13 +11,10 @@ app.get("/claim", (req, res) => {
     claim()
 });
 
-app.get("/install", (req, res) => {
-    install()
-});
-
 
 const server = app.listen(port, () => {
     console.log(`Server listening on port ${port}`);
+    install()
 });
 
 function claim() {
