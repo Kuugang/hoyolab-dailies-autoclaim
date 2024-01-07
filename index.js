@@ -13,6 +13,9 @@ let PASSWORD = process.env.PASSWORD;
 
 try {
   console.log('Installing Playwright...');
+
+  execSync('npm init playwright@latest');
+
   execSync('npx playwright install');
   console.log('Playwright installation completed successfully!');
 } catch (error) {
