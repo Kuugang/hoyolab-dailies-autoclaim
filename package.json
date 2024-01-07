@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "vercel-build": "npm install playwright && playwright install && npm install",
+    "vercel-build": "npm install playwright && npx playwright install && npm install",
     "build": "npm install playwright && npx playwright install && npm install"
   },
   "keywords": [],
