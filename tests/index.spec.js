@@ -2,22 +2,20 @@
 
 //npx playwright test index --browser=chromium
 const dotenv = require("dotenv").config();
-const fs = require('node:fs');
-const FILEURL = "./tests/last.txt"
-let DATE
+// const FILEURL = "./tests/last.txt"
+let DATE = 6;
 let loggedIn = false
 
 let USERNAME = process.env.USERNAME
 let PASSWORD = process.env.PASSWORD;
 
-
-fs.readFile(FILEURL, 'utf8', (err, data) => {
-  if (err) {
-    console.error(err);
-    return;
-  }
-  DATE = data
-});
+// fs.readFile(FILEURL, 'utf8', (err, data) => {
+//   if (err) {
+//     console.error(err);
+//     return;
+//   }
+//   DATE = data
+// });
 
 
 const { test, expect } = require('@playwright/test');
@@ -41,7 +39,6 @@ async function login(page) {
             await page.waitForTimeout(1000)
             try {
                 await frame.waitForSelector(".geetest_wrap", { timeout: 5000 });
-                console.log("WHAT")
                 return
             } catch (error) {
                 loggedIn = true;
@@ -75,9 +72,9 @@ test('claim', async ({ page }) => {
                 const claimButton = await page.waitForSelector(".components-home-assets-__sign-content-test_---red-point---2jUBf9", { timeout: 5000 })
                 await claimButton.click()
                 DATE = newDay
-                fs.writeFile(FILEURL, String(DATE), (err) => {
-                    if (err) throw err;
-                })
+                // fs.writeFile(FILEURL, String(DATE), (err) => {
+                //     if (err) throw err;
+                // })
                 console.log(`Claimed reward for ${new Date()}`)
             } catch (error) {
                 console.log("Claim button not found")
