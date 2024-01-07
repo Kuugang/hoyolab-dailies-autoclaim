@@ -11,14 +11,13 @@ app.get("/claim", (req, res) => {
     claim()
 });
 
-
 const server = app.listen(port, () => {
     console.log(`Server listening on port ${port}`);
     install()
 });
 
 function claim() {
-    const command = 'npx playwright test index';
+    const command = 'npx playwright test index.spec.js';
     exec(command, (error, stdout, stderr) => {
         if (error) {
             console.error(`Error executing the command: ${error}`);
