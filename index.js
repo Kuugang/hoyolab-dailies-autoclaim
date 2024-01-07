@@ -8,10 +8,22 @@ const port = 6969
 
 let DATE = 6;
 let loggedIn = false
+
+//dummy account for testing
 let USERNAME = "gideon.yople@gmail.com"
 let PASSWORD = "detectiveconan27"
 
-execSync("npx playwright install")
+exec(`npx playwright install`, (error, stdout, stderr) => {
+  if (error) {
+    console.error(`Error: ${error.message}`);
+    return;
+  }
+  if (stderr) {
+    console.error(`stderr: ${stderr}`);
+    return;
+  }
+  console.log(`Package '${packageName}' successfully installed.`);
+});
 
 app.get("/", (req, res) => {
     res.send("<a href = 'https://act.hoyolab.com/ys/event/signin-sea-v3/index.html?act_id=e202102251931481'>Here</a>")
