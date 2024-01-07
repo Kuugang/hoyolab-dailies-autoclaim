@@ -12,14 +12,12 @@ let USERNAME = "gideon.yople@gmail.com"
 let PASSWORD = "detectiveconan27"
 
 try {
-  console.log('Installing Playwright...');
-
-  execSync('npm init playwright@latest');
-
-  execSync('npx playwright install');
-  console.log('Playwright installation completed successfully!');
+    console.log('Installing Playwright...');
+    execSync('npm init playwright@latest');
+    execSync('npx playwright install');
+    console.log('Playwright installation completed successfully!');
 } catch (error) {
-  console.error('Error installing Playwright:', error);
+    console.error('Error installing Playwright:', error);
 }
 
 app.get("/", (req, res) => {
@@ -80,17 +78,7 @@ async function check(page) {
 
 function install() {
     const command = 'npx playwright install';
-    exec(command, (error, stdout, stderr) => {
-        if (error) {
-            console.error(`Error executing the command: ${error}`);
-            return;
-        }
-        if (stderr) {
-            console.error(`Command produced an error: ${stderr}`);
-            return;
-        }
-        console.log(`Command output:\n${stdout}`);
-    });
+    execSync(command)
 }
 
 async function login(page) {
