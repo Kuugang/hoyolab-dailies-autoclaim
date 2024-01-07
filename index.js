@@ -1,36 +1,20 @@
-const { exec } = require('child_process');
-const { execSync } = require('child_process');
 const { chromium } = require('playwright');
 const dotenv = require("dotenv").config();
-const express = require("express");
-const app = express();
-const port = 6969
 
 let DATE = 6;
 let loggedIn = false
 
-//dummy account for testing
-let USERNAME = "gideon.yople@gmail.com"
-let PASSWORD = "detectiveconan27"
+let USERNAME = process.env.USERNAME // or simply put "your username"
+let PASSWORD = process.env.PASSWORD // "your password"
 
-app.get("/", (req, res) => {
-    res.send("<a href = 'https://act.hoyolab.com/ys/event/signin-sea-v3/index.html?act_id=e202102251931481'>Here</a>")
-});
-
-app.get("/install", (req, res) => {
-    install()
-    res.status(200)
-});
-
-
-app.get("/claim", async (req, res) => {
+async function claim() {
     try {
-        const browser = await chromium.launch({ headless: false });
+        const browser = await chromium.launch({ headless: false }) //change to true
         const context = await browser.newContext();
         const page = await context.newPage();
 
         await page.goto("https://act.hoyolab.com/ys/event/signin-sea-v3/index.html?act_id=e202102251931481&mhy_auth_required=true&mhy_presentation_style=fullscreen");
-        await (await page.waitForSelector('.components-home-assets-__sign-guide_---guide-close---2VvmzE')).click()
+        await(await page.waitForSelector('.components-home-assets-__sign-guide_---guide-close---2VvmzE')).click()
 
         await check(page)
 
@@ -50,26 +34,19 @@ app.get("/claim", async (req, res) => {
                 }
             }
         }
-    } catch (error) {
-        console.log(error)
-        return res.status(500)
     }
-});
+    catch (error) {
+        console.log(error)
+    }
+}
 
-const server = app.listen(port, () => {
-    console.log(`Server listening on port ${port}`);
-});
-
+claim()
 
 async function check(page) {
     await login(page)
     if (loggedIn == false) {
         await check(page)
     }
-}
-
-function install() {
-    execSync(`npx playwright install`, { stdio: 'inherit' });
 }
 
 async function login(page) {
