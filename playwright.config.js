@@ -39,7 +39,7 @@ module.exports = defineConfig({
             use: {
                 ...devices['Desktop Chrome'],
                 // browserName: 'chromium',
-                // headless: false
+                headless: false
             },
         },
 
