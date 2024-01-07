@@ -1,4 +1,5 @@
 const { exec } = require('child_process');
+const { execSync } = require('child_process');
 const { chromium } = require('playwright');
 const dotenv = require("dotenv").config();
 const express = require("express");
@@ -9,6 +10,14 @@ let DATE = 6;
 let loggedIn = false
 let USERNAME = process.env.USERNAME
 let PASSWORD = process.env.PASSWORD;
+
+try {
+  console.log('Installing Playwright...');
+  execSync('npx playwright install');
+  console.log('Playwright installation completed successfully!');
+} catch (error) {
+  console.error('Error installing Playwright:', error);
+}
 
 app.get("/", (req, res) => {
     res.send("<a href = 'https://act.hoyolab.com/ys/event/signin-sea-v3/index.html?act_id=e202102251931481'>Here</a>")
@@ -22,7 +31,7 @@ app.get("/install", (req, res) => {
 
 app.get("/claim", async (req, res) => {
     try {
-        const browser = await chromium.launch({ headless: false });
+        const browser = await chromium.launch({ headless: true });
         const context = await browser.newContext();
         const page = await context.newPage();
 
