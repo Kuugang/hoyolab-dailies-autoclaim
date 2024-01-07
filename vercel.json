@@ -1,23 +1,9 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "index.js",
-      "use": "@vercel/node",
-      "config": {
-        "maxLambdaSize": "10mb" 
-      }
-    }
-  ],
   "routes": [
     {
       "src": "/(.*)",
       "dest": "/"
     }
-  ],
-  "functions": {
-    "api/**/*.js": {
-      "memory": 512
-    }
-  }
+  ]
 }
