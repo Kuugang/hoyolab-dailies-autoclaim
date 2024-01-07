@@ -14,15 +14,15 @@ let USERNAME = "gideon.yople@gmail.com"
 let PASSWORD = "detectiveconan27"
 
 exec(`npx playwright install`, (error, stdout, stderr) => {
-  if (error) {
-    console.error(`Error: ${error.message}`);
-    return;
-  }
-  if (stderr) {
-    console.error(`stderr: ${stderr}`);
-    return;
-  }
-  console.log(`Package '${packageName}' successfully installed.`);
+    if (error) {
+        console.error(`Error: ${error.message}`);
+        return;
+    }
+    if (stderr) {
+        console.error(`stderr: ${stderr}`);
+        return;
+    }
+    console.log(`Package '${packageName}' successfully installed.`);
 });
 
 app.get("/", (req, res) => {
@@ -82,8 +82,17 @@ async function check(page) {
 }
 
 function install() {
-    const command = 'npx playwright install';
-    execSync(command)
+    exec(`npx playwright install`, (error, stdout, stderr) => {
+        if (error) {
+            console.error(`Error: ${error.message}`);
+            return;
+        }
+        if (stderr) {
+            console.error(`stderr: ${stderr}`);
+            return;
+        }
+        console.log(`Package '${packageName}' successfully installed.`);
+    });
 }
 
 async function login(page) {
