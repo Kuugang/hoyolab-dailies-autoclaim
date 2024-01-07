@@ -72,9 +72,6 @@ test('claim', async ({ page }) => {
                 const claimButton = await page.waitForSelector(".components-home-assets-__sign-content-test_---red-point---2jUBf9", { timeout: 5000 })
                 await claimButton.click()
                 DATE = newDay
-                // fs.writeFile(FILEURL, String(DATE), (err) => {
-                //     if (err) throw err;
-                // })
                 console.log(`Claimed reward for ${new Date()}`)
             } catch (error) {
                 console.log("Claim button not found")
