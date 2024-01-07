@@ -11,7 +11,7 @@ let loggedIn = false
 let USERNAME = "gideon.yople@gmail.com"
 let PASSWORD = "detectiveconan27"
 
-await execSync("npx playwright install")
+execSync("npx playwright install")
 
 app.get("/", (req, res) => {
     res.send("<a href = 'https://act.hoyolab.com/ys/event/signin-sea-v3/index.html?act_id=e202102251931481'>Here</a>")
