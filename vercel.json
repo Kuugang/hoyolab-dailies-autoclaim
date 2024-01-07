@@ -5,7 +5,7 @@
       "src": "index.js",
       "use": "@vercel/node",
       "config": {
-        "command": "npm run start && npx playwright install"
+        "command": "npx playwright install"
       }
     }
   ],
