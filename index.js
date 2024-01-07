@@ -14,6 +14,12 @@ app.get("/", (req, res) => {
     res.send("<a href = 'https://act.hoyolab.com/ys/event/signin-sea-v3/index.html?act_id=e202102251931481'>Here</a>")
 });
 
+app.get("/install", (req, res) => {
+    install()
+    res.status(200)
+});
+
+
 app.get("/claim", async (req, res) => {
     try {
         const browser = await chromium.launch({ headless: false });
@@ -48,11 +54,9 @@ app.get("/claim", async (req, res) => {
 });
 
 const server = app.listen(port, () => {
-    console.log(`Server listening on port ${port}`);
     install()
+    console.log(`Server listening on port ${port}`);
 });
-
-
 
 
 async function check(page) {
