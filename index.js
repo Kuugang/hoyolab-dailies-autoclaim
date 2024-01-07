@@ -11,15 +11,6 @@ let loggedIn = false
 let USERNAME = "gideon.yople@gmail.com"
 let PASSWORD = "detectiveconan27"
 
-try {
-    console.log('Installing Playwright...');
-    execSync('npm init playwright@latest');
-    execSync('npx playwright install');
-    console.log('Playwright installation completed successfully!');
-} catch (error) {
-    console.error('Error installing Playwright:', error);
-}
-
 app.get("/", (req, res) => {
     res.send("<a href = 'https://act.hoyolab.com/ys/event/signin-sea-v3/index.html?act_id=e202102251931481'>Here</a>")
 });
