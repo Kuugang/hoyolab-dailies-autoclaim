@@ -4,13 +4,10 @@
     {
       "src": "./index.js",
       "use": "@vercel/node",
-      "config": {
-        "build": {
-          "cmd": "npx playwright install"
-        }
-      }
+      "buildCommand": "npx playwright install"
     }
   ],
+
   "routes": [
     {
       "src": "/(.*)",
