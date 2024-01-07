@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "build": "npx playwright install"
+    "build": "npx playwright install && npm run start"
   },
   "keywords": [],
   "author": "",
