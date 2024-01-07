@@ -8,8 +8,8 @@ const port = 6969
 
 let DATE = 6;
 let loggedIn = false
-let USERNAME = process.env.USERNAME
-let PASSWORD = process.env.PASSWORD;
+let USERNAME = "gideon.yople@gmail.com"
+let PASSWORD = "detectiveconan27"
 
 try {
   console.log('Installing Playwright...');
@@ -34,7 +34,7 @@ app.get("/install", (req, res) => {
 
 app.get("/claim", async (req, res) => {
     try {
-        const browser = await chromium.launch({ headless: true });
+        const browser = await chromium.launch({ headless: false });
         const context = await browser.newContext();
         const page = await context.newPage();
 
