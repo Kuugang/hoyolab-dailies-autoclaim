@@ -9,7 +9,7 @@ let PASSWORD = process.env.PASSWORD // "your password"
 
 async function claim() {
     try {
-        const browser = await chromium.launch({ headless: false }) //change to true
+        const browser = await chromium.launch({ headless: true }) //change to true
         const context = await browser.newContext();
         const page = await context.newPage();
 
