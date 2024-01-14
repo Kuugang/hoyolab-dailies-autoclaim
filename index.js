@@ -1,11 +1,30 @@
 const { chromium } = require('playwright');
+const { exec } = require('child_process');
 const dotenv = require("dotenv").config()
 
 let DATE = 6;
 let loggedIn = false
 
-let USERNAME = "jakebajo21@gmail.com" // or simply put "your username"
-let PASSWORD = "boangka12369" // "your password"
+let USERNAME = process.env.USERNAME
+let PASSWORD = process.env.PASSWORD
+
+
+const command = 'npx playwright install';
+
+exec(command, (error, stdout, stderr) => {
+    if (error) {
+        console.error(`Error: ${error.message}`);
+        return;
+    }
+
+    if (stderr) {
+        console.error(`Error: ${stderr}`);
+        return;
+    }
+
+    console.log(`Output: ${stdout}`);
+});
+
 
 async function claim() {
     try {
@@ -62,16 +81,6 @@ async function login(page) {
             await (await frame.waitForSelector(".el-input__inner[type='password']")).fill(PASSWORD)
             await (await frame.waitForSelector("button[type='submit']")).click()
             await page.waitForTimeout(1000)
-
-            //facebook
-            // await (await frame.waitForSelector(".facebook")).click()
-            // const newPage = await page.context().waitForEvent('page');
-            // await page.waitForTimeout(3000);
-
-            // await (await newPage.waitForSelector(".inputtext._55r1[type='text']")).fill(USERNAME)
-            // await (await newPage.waitForSelector(".inputtext._55r1[type='password']")).fill(PASSWORD)
-            // await (await newPage.waitForSelector("input[name='login']")).click()
-
 
             try {
                 await frame.waitForSelector(".geetest_head", { timeout: 5000 });
